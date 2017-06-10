@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Example website</title>
+        
+    </head>
+    <body>
+        <div>
+            <img id="my-image" />
+            <span>Querying Server</span>&nbsp;<span id="time"></span><span id="returned"></span>
+        </div>
+    </body>
+    <script type="text/javascript" >
+        var maxIteration = 10;
+        var currentIteration = 0;
+        setInterval(function(){
+         var current = ++currentIteration % maxIteration;
+         if(current == 0){
+
+         }
+         document.getElementById('time').innerHTML =current+" seconds since query";
+        },1000)
+        
+        var myImage = document.querySelector('#my-image');
+        fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+        .then(res => res.blob())
+        .then(res => {
+            var objectURL = URL.createObjectURL(res);
+            myImage.src = objectURL;
+        });
+        </script>
+</html>
